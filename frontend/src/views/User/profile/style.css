@@ -1,0 +1,45 @@
+.profilebody{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 12em;
+}
+
+.photo{
+    border: 1px solid black;
+    padding: 5em;
+    height: 40vh;
+    border-radius: 20em;
+    border: 1px solid  rgba(26, 116, 146, 0.521);
+
+}
+
+
+
+.profile{
+    margin-top: 5em;
+    padding: 1em;
+    background-color: rgba(26, 116, 146, 0.329);
+    border: 1px solid black;
+    border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30vw;
+    height: 40vh;
+}
+
+.profile input{
+    margin: 1em;
+    width: 70%;
+    padding: 0.5em;
+    border: 1px solid  rgba(26, 116, 146, 0.747);
+    border-radius: 0.4em;
+}
+
+.profile button{
+    width: 50%;
+    margin-top: 1em;
+    border-radius: 1em;
+    border: 1px solid  rgba(26, 116, 146, 0.521);
+    background-color:  rgba(26, 116, 146, 0.521);
+}

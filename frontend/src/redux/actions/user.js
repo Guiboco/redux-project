@@ -3,8 +3,10 @@ import react from 'react';
 import axios from 'axios';
 import userReducer from '../reducers/user';
 
-export const registerUser = async ({ name, email, password }) => {
 
+
+export const registerUser = async ({ name, email, password }) => {
+const baseApiUrl =process.env.NODE_ENV === "production"? "http://pelisguille.herokuapp.com": 'http://localhost:3001';
     const res = await axios.post('http://localhost:3001/users/register', {
         name,
         email,
@@ -20,7 +22,7 @@ export const registerUser = async ({ name, email, password }) => {
 }
 
 export const getAllUsers = async () => {
-    const res = await axios.get('http://localhost:3001/users/findAll');// hago la petición de todos los usuarios al backend
+    const res = await axios.get(baseApiUrl + '/users/findAll');// hago la petición de todos los usuarios al backend
     const action = {
         type: 'GET_ALL',
         payload: res.data
@@ -33,7 +35,7 @@ export const updateProfile = async (user) => {
     try {
         const token = localStorage.getItem('authToken') //sacamos del localStorage el token
         if (!token) throw new Error('you are not authentificated') //si no hay token le enviamos un error.
-       await axios.patch('http://localhost:3001/users/updateProfile', user, {
+       await axios.patch(baseApiUrl + '/users/updateProfile', user, {
             headers: { 'authenticate': token }
         });
     } catch (error) {
@@ -44,7 +46,7 @@ export const updateProfile = async (user) => {
 
 
 export const loginUser = async (name,password) =>{
-    const res = await axios.post('http://localhost:3001/users/register',{
+    const res = await axios.post(baseApiUrl + '/users/register',{
         name,
         password
     })

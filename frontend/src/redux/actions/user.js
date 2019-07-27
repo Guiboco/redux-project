@@ -22,6 +22,7 @@ const baseApiUrl =process.env.NODE_ENV === "production"? "http://pelisguille.her
 }
 
 export const getAllUsers = async () => {
+    const baseApiUrl =process.env.NODE_ENV === "production"? "http://pelisguille.herokuapp.com": 'http://localhost:3001';
     const res = await axios.get(baseApiUrl + '/users/findAll');// hago la petición de todos los usuarios al backend
     const action = {
         type: 'GET_ALL',
@@ -33,6 +34,7 @@ export const getAllUsers = async () => {
 
 export const updateProfile = async (user) => {
     try {
+        const baseApiUrl =process.env.NODE_ENV === "production"? "http://pelisguille.herokuapp.com": 'http://localhost:3001';
         const token = localStorage.getItem('authToken') //sacamos del localStorage el token
         if (!token) throw new Error('you are not authentificated') //si no hay token le enviamos un error.
        await axios.patch(baseApiUrl + '/users/updateProfile', user, {
@@ -46,6 +48,7 @@ export const updateProfile = async (user) => {
 
 
 export const loginUser = async (name,password) =>{
+    const baseApiUrl =process.env.NODE_ENV === "production"? "http://pelisguille.herokuapp.com": 'http://localhost:3001';
     const res = await axios.post(baseApiUrl + '/users/register',{
         name,
         password
